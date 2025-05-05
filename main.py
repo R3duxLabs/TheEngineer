@@ -84,11 +84,12 @@ EXECUTION LOGIC v3.0 – DISCIPLINED DELIVERY
 # Conversation storage
 CONVERSATION_DIR = "conversations"
 os.makedirs(CONVERSATION_DIR, exist_ok=True)
-conversation_history = []
-
 # Initialize variables
-SYSTEM_PROMPT = """You are Claude, a helpful AI assistant."""
 current_domain = None
+SYSTEM_PROMPT = """You are Claude, a helpful AI assistant."""
+
+# Conversation storage
+conversation_history = []
 
 def call_claude(message, conversation_history=None):
     """Call Claude with a user message and update conversation history"""
