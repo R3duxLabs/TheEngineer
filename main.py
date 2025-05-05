@@ -87,8 +87,8 @@ os.makedirs(CONVERSATION_DIR, exist_ok=True)
 conversation_history = []
 
 # Initialize variables
-current_domain = None
 SYSTEM_PROMPT = """You are Claude, a helpful AI assistant."""
+current_domain = None
 
 def call_claude(message, conversation_history=None):
     """Call Claude with a user message and update conversation history"""
