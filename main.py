@@ -81,14 +81,18 @@ EXECUTION LOGIC v3.0 – DISCIPLINED DELIVERY
 6. Confirm all file deliveries; if failed, split and resend.
 """
 
+# Initialize global variables
+global current_domain
+current_domain = None
+
 # Conversation storage
 CONVERSATION_DIR = "conversations"
 os.makedirs(CONVERSATION_DIR, exist_ok=True)
-# Initialize variables
-current_domain = None
+
+# System configuration
 SYSTEM_PROMPT = """You are Claude, a helpful AI assistant."""
 
-# Conversation storage
+# Initialize conversation history
 conversation_history = []
 
 def call_claude(message, conversation_history=None):
