@@ -12,6 +12,10 @@ import logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
+# Initialize global variables
+global current_domain
+current_domain = None
+
 # Anthropic API key
 API_KEY = os.environ.get("ANTHROPIC_API_KEY")
 if not API_KEY:
