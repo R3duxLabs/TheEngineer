@@ -86,7 +86,7 @@ EXECUTION LOGIC v3.0 – DISCIPLINED DELIVERY
 """
 
 # Initialize global variables
-global current_domain
+
 current_domain = None
 
 # Conversation storage
@@ -1775,13 +1775,13 @@ HTML = """
 from search import search_conversations, format_search_results, search_current_conversation
 
 # Import domain-specific prompts
-from prompts import get_available_domains, initialize_prompts_directory, create_custom_domain, delete_domain
+from prompts import get_available_domains, initialize_prompts_directory, create_custom_domain
 
 # Import settings management
-from settings import initialize_settings, get_setting, update_setting, format_settings_display, reset_to_defaults
+from settings import initialize_settings, update_setting, format_settings_display, reset_to_defaults
 
 # Import code analysis tools
-from code_analyzer import analyze_code, analyze_directory, format_analysis_report
+from code_analyzer import analyze_code, format_analysis_report
 
 # Import export/import functionality
 from export_import import export_conversation, export_all_formats, import_conversation, EXPORT_FORMATS
@@ -1793,7 +1793,7 @@ from offline_mode import initialize_cache, get_connection_status, call_claude_wi
 from agents import (
     initialize_agents, get_agent_config, set_current_agent, get_current_agent_id,
     get_available_agents, create_agent, update_agent, delete_agent,
-    get_system_prompt, get_greeting, get_agent_model, format_agent_info
+    format_agent_info
 )
 
 # Initialize prompts directory
@@ -1876,7 +1876,7 @@ class TheEngineerHandler(http.server.SimpleHTTPRequestHandler):
                             response = f"Current domain: {current_domain}\n\nAvailable domains:\n" + \
                                       "\n".join([f"• {domain}" for domain in domains])
                         else:
-                            response = f"Current domain: default\n\nAvailable domains:\n" + \
+                            response = "Current domain: default\n\nAvailable domains:\n" + \
                                       "\n".join([f"• {domain}" for domain in domains])
                     
                     elif message.startswith('/domain '):
@@ -2557,7 +2557,7 @@ def run_console():
         elif user_input.lower() == "offline":
             # Show offline status
             online = get_connection_status()
-            print(f"\nOffline mode status:")
+            print("\nOffline mode status:")
             print(f"- Connection: {'Online' if online else 'Offline'}")
             print(f"- API key: {'Available' if API_KEY else 'Not available'}")
             print(f"- Mode: {'Online' if online and API_KEY else 'Offline'}")
@@ -2699,9 +2699,9 @@ def run_console():
                 analysis_result, conversation_history = call_claude(context + "\n" + detailed_analysis + "\n\n" + analysis_prompt, conversation_history)
                 
                 # Display the analysis
-                print(f"\n\033[1;34m=== Automated Code Analysis ===\033[0m")
+                print("\n\033[1;34m=== Automated Code Analysis ===\033[0m")
                 print(detailed_analysis)
-                print(f"\n\033[1;34m=== Claude's Analysis ===\033[0m")
+                print("\n\033[1;34m=== Claude's Analysis ===\033[0m")
                 print(analysis_result)
             except Exception as e:
                 print(f"\nError analyzing files: {str(e)}")
