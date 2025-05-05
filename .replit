@@ -18,7 +18,7 @@ localPort = 8080
 externalPort = 80
 
 [workflows]
-runButton = "Run"
+runButton = "Run API"
 
 [[workflows.workflow]]
 name = "Run"
@@ -28,3 +28,12 @@ mode = "sequential"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "python main.py --web"
+
+[[workflows.workflow]]
+name = "Run API"
+author = 42203843
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "uvicorn app.main:app --host 0.0.0.0 --port 5000 --reload"
