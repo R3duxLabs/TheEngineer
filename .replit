@@ -1,15 +1,17 @@
+run = "python main.py"
+language = "python3"
 entrypoint = "main.py"
 modules = ["python-3.11"]
 
 [nix]
-channel = "stable-24_05"
-
-[unitTest]
-language = "python3"
-
-[gitHubImport]
-requiredFiles = [".replit", "replit.nix"]
+channel = "stable-23_11"
+packages = ["python311Packages.uvicorn"]
 
 [deployment]
-run = ["python3", "main.py"]
+run = "python main.py --web"
 deploymentTarget = "cloudrun"
+ignorePorts = false
+
+[[ports]]
+localPort = 8080
+externalPort = 80

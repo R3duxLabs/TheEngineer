@@ -86,9 +86,8 @@ CONVERSATION_DIR = "conversations"
 os.makedirs(CONVERSATION_DIR, exist_ok=True)
 conversation_history = []
 
-# Initialize variables
-current_domain = None
-SYSTEM_PROMPT = """You are Claude, a helpful AI assistant."""
+# Current domain from settings
+current_domain = get_setting('domain')
 
 def call_claude(message, conversation_history=None):
     """Call Claude with a user message and update conversation history"""
@@ -2443,7 +2442,6 @@ def run_console():
             else:
                 domains = get_available_domains()
                 if domain in domains:
-                    global current_domain
                     current_domain = domain
                     update_setting('domain', domain)
                     print(f"\nSwitched to {domain} domain.")

@@ -1,0 +1,7 @@
+Dark Mode - Shows the application with the dark theme activated.
+- Dark background with light text
+- Midnight blue header
+- Dark message bubbles with proper contrast
+- Softened color palette for better night viewing
+- Light blue accent colors for buttons and interactive elements
+- Moon icon showing in the theme toggle

@@ -1,0 +1,10 @@
+Agent Switching - Shows the agent configuration panel.
+- Slide-out panel from the right side
+- List of available agents with their icons
+- Currently selected agent highlighted
+- Form for editing agent settings:
+  - Name, Description, Avatar fields
+  - System prompt textarea
+  - Model selection dropdown
+  - Temperature slider for adjusting creativity
+- Save, Delete, and Cancel buttons at the bottom

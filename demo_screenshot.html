@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Engineer - Demo Screenshots</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #4361ee;
+            margin-bottom: 20px;
+        }
+        .screenshot {
+            margin-bottom: 40px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .screenshot img {
+            width: 100%;
+            display: block;
+        }
+        .screenshot-caption {
+            background-color: #f5f5f7;
+            padding: 15px;
+            border-top: 1px solid #ddd;
+        }
+        .screenshot-caption h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .light-mode, .dark-mode {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .mode-option {
+            flex: 1;
+            text-align: center;
+        }
+        .mode-option img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        pre {
+            background-color: #f5f5f7;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        .note {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>The Engineer - Desktop App</h1>
+    
+    <div class="note">
+        <strong>Note:</strong> These are simulated screenshots of how the desktop app would appear when running locally. The actual app provides the same interface with full functionality connected to the Claude API.
+    </div>
+    
+    <h2>Main Interface</h2>
+    <div class="screenshot">
+        <pre style="margin:0; white-space:pre-wrap; font-family:monospace; color:#444; background:#f8f9fa; padding:20px; border-radius:0;">
++----------------------------------------------------------------------+
+|                                                                      |
+|  The Engineer                                            🌙           |
+|                                                                      |
+|  +------------------------------------------------------------------+|
+|  | Current Agent: Claude                                            ||
+|  |                                                                  ||
+|  | [Claude] [Code Expert] [Data Scientist] [Creative Writer] [Security Expert] ||
+|  +------------------------------------------------------------------+|
+|                                                                      |
+|  +------------------------------------------------------------------+|
+|  |                                                                  ||
+|  | Claude:                                                          ||
+|  | Hello! I'm your The Engineer. How can I help you today?          ||
+|  |                                                                  ||
+|  | You:                                                             ||
+|  | Can you help me optimize this Python function?                   ||
+|  |                                                                  ||
+|  | Claude:                                                          ||
+|  | I'd be happy to help optimize your Python function. Could you    ||
+|  | please share the code you'd like me to improve?                  ||
+|  |                                                                  ||
+|  +------------------------------------------------------------------+|
+|                                                                      |
+|  +------------------------------------------------------------------+|
+|  | Type your message here...                             [Send]     ||
+|  +------------------------------------------------------------------+|
+|                                                                      |
++----------------------------------------------------------------------+
+        </pre>
+        <div class="screenshot-caption">
+            <h3>Main Chat Interface</h3>
+            <p>The main interface shows the conversation with Claude, with agent switching capabilities at the top. Users can toggle between different specialized agent personalities depending on their task.</p>
+        </div>
+    </div>
+    
+    <h2>Dark Mode</h2>
+    <div class="light-mode">
+        <div class="mode-option">
+            <pre style="margin:0; white-space:pre-wrap; font-family:monospace; color:#444; background:#f8f9fa; padding:20px; border-radius:8px;">
++--------------------------------+
+|                                |
+|  The Engineer        🌙       |
+|                                |
+|  +----------------------------+|
+|  | Light Mode                 ||
+|  | Current Agent: Claude      ||
+|  |                            ||
+|  | Claude:                    ||
+|  | How can I help you today?  ||
+|  |                            ||
+|  +----------------------------+|
+|                                |
++--------------------------------+
+            </pre>
+            <p>Light Mode</p>
+        </div>
+        <div class="mode-option">
+            <pre style="margin:0; white-space:pre-wrap; font-family:monospace; color:#ddd; background:#121212; padding:20px; border-radius:8px;">
++--------------------------------+
+|                                |
+|  The Engineer        ☀️       |
+|                                |
+|  +----------------------------+|
+|  | Dark Mode                  ||
+|  | Current Agent: Claude      ||
+|  |                            ||
+|  | Claude:                    ||
+|  | How can I help you today?  ||
+|  |                            ||
+|  +----------------------------+|
+|                                |
++--------------------------------+
+            </pre>
+            <p>Dark Mode</p>
+        </div>
+    </div>
+    
+    <h2>Agent Configuration Panel</h2>
+    <div class="screenshot">
+        <pre style="margin:0; white-space:pre-wrap; font-family:monospace; color:#444; background:#f8f9fa; padding:20px; border-radius:0;">
++----------------------------------------------------------------------+
+|                                                                      |
+|  The Engineer                                            🌙           |
+|                                                                      |
+|  +---------------------------------+   +-------------------------+   |
+|  |                                 |   |                         |   |
+|  | Conversation with Claude       |   | Agent Configuration     |   |
+|  |                                 |   |                         |   |
+|  | ...                             |   | Current Agent:          |   |
+|  |                                 |   | [Claude ▼]              |   |
+|  |                                 |   |                         |   |
+|  |                                 |   | [View] [New]            |   |
+|  |                                 |   |                         |   |
+|  |                                 |   | ID: code_expert         |   |
+|  |                                 |   | Name: Code Expert       |   |
+|  |                                 |   | Description: Coding...  |   |
+|  |                                 |   | Avatar: 👨‍💻             |   |
+|  |                                 |   | Model: [Claude-3.5 ▼]   |   |
+|  |                                 |   | Temperature: [==||===]  |   |
+|  |                                 |   |                         |   |
+|  |                                 |   | System Prompt:          |   |
+|  |                                 |   | +-------------------+   |   |
+|  |                                 |   | | You are a coding  |   |   |
+|  |                                 |   | | specialist...     |   |   |
+|  |                                 |   | +-------------------+   |   |
+|  |                                 |   |                         |   |
+|  |                                 |   | [Save] [Delete] [Cancel]|   |
+|  |                                 |   |                         |   |
+|  +---------------------------------+   +-------------------------+   |
+|                                                                      |
++----------------------------------------------------------------------+
+        </pre>
+        <div class="screenshot-caption">
+            <h3>Agent Configuration Interface</h3>
+            <p>The agent configuration panel slides in from the right side of the screen, allowing users to view, edit, create, and delete agent personalities. Users can customize system prompts, temperature, and other settings.</p>
+        </div>
+    </div>
+    
+    <h2>Installation Instructions</h2>
+    <ol>
+        <li>Download the application package for your platform (macOS, Windows, or Linux)</li>
+        <li>Run the installer and follow the on-screen instructions</li>
+        <li>Launch The Engineer from your applications menu</li>
+        <li>Enter your Claude API key in the settings</li>
+        <li>Start conversing with Claude through The Engineer interface</li>
+    </ol>
+    
+    <div class="note">
+        <strong>Coming Soon:</strong> The Engineer will be available on the App Store, Microsoft Store, and other distribution platforms once developer accounts are set up.
+    </div>
+</body>
+</html>

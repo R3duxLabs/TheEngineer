@@ -1,0 +1,14 @@
+# Electron build artifacts
+node_modules/
+dist/
+.DS_Store
+
+# Generated icons
+icons/icon-*.png
+icons/icon.png
+icons/icon.ico
+icons/icon.iconset/
+icons/icon.icns
+
+# Environment
+.env

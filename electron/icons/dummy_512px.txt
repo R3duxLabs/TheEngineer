@@ -1,0 +1,1 @@
+This is a dummy 512x512 icon placeholder. In a real environment, you would use the generate-icons.sh script to create proper icons for all platforms.

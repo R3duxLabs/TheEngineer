@@ -1,0 +1,7 @@
+Main Interface - Shows the primary chat interface with The Engineer.
+- The Engineer logo and title in the top header
+- Dark/light mode toggle in the top right
+- Chat history showing the conversation with Claude
+- Message input bar at the bottom
+- Command descriptions in the panel below
+- A floating button in the bottom right for accessing agent settings

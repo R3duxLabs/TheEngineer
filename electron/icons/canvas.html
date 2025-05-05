@@ -1,0 +1,17 @@
+<html><body><canvas id="canvas" width="512" height="512"></canvas><script>
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+      // Draw a gradient background
+      const gradient = ctx.createLinearGradient(0, 0, 512, 512);
+      gradient.addColorStop(0, "#4361ee");
+      gradient.addColorStop(1, "#4cc9f0");
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 512, 512);
+      // Draw text
+      ctx.font = "bold 80px Arial";
+      ctx.fillStyle = "white";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText("TE", 256, 256);
+      // Save the image - this part is just shown here, it would need to be saved manually
+    </script></body></html>

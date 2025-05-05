@@ -1,0 +1,53 @@
+{
+  "name": "the-engineer",
+  "productName": "The Engineer",
+  "version": "1.0.0",
+  "description": "Advanced Claude-powered AI assistant for software engineering and creative tasks",
+  "homepage": "https://github.com/yourusername/the-engineer",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "build:mac": "electron-builder --mac",
+    "build:win": "electron-builder --win",
+    "build:linux": "electron-builder --linux"
+  },
+  "keywords": [
+    "AI",
+    "Claude",
+    "Assistant",
+    "Engineering",
+    "Productivity"
+  ],
+  "author": {
+    "name": "The Engineer Team",
+    "email": "info@the-engineer.app"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^26.2.0",
+    "electron-builder": "^24.6.3"
+  },
+  "dependencies": {
+    "electron-store": "^8.1.0"
+  },
+  "build": {
+    "appId": "com.theengineer.app",
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "target": ["dmg", "zip"],
+      "icon": "icons/icon.icns"
+    },
+    "win": {
+      "target": ["nsis", "portable"],
+      "icon": "icons/icon.ico"
+    },
+    "linux": {
+      "target": ["deb"],
+      "category": "Development"
+    },
+    "directories": {
+      "output": "dist"
+    }
+  }
+}

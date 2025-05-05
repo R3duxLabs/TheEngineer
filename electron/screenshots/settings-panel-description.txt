@@ -1,0 +1,9 @@
+Settings Panel - Shows the application settings interface.
+- Application preferences section
+- API key configuration field (masked for security)
+- Theme selection with auto/light/dark options
+- Font size adjustment slider
+- Code highlighting style options
+- Conversation history settings
+- Location for saved files
+- Advanced options for power users

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>The Engineer</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f7;
+      color: #333;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .logo {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 20px;
+      background-color: #4361ee;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 48px;
+      font-weight: bold;
+    }
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+      margin: 10px 0;
+      max-width: 600px;
+      color: #666;
+    }
+    .message {
+      margin-top: 30px;
+      padding: 15px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      width: 80%;
+      max-width: 600px;
+    }
+    .button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #4361ee;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .button:hover {
+      background-color: #3a56d4;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">TE</div>
+  <h1>The Engineer</h1>
+  <p>Advanced Claude-powered AI assistant for software engineering and creative tasks.</p>
+  
+  <div class="message">
+    <p><strong>Demo Mode</strong></p>
+    <p>This is a demo of The Engineer desktop application. In a real environment, this would connect to the Claude API and provide a fully functional AI assistant experience.</p>
+  </div>
+  
+  <button class="button" onclick="alert('In a real environment, this would start a new conversation.')">New Conversation</button>
+  
+  <script>
+    // Demo functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Demo interface loaded');
+    });
+  </script>
+</body>
+</html>

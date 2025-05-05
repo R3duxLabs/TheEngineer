@@ -1,0 +1,151 @@
+name: Build and Release Desktop App
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+
+jobs:
+  build-macos:
+    runs-on: macos-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          
+      - name: Install dependencies and build
+        run: |
+          cd electron
+          npm install
+          cp -r ../generated-icon.png icons/icon_source.png
+          # Generate macOS icons
+          cd icons
+          chmod +x generate-icons.sh
+          ./generate-icons.sh
+          cd ..
+          npm run build:mac
+          
+      - name: Upload macOS build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: macos-build
+          path: electron/dist/*.dmg
+          
+  build-windows:
+    runs-on: windows-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          
+      - name: Install dependencies and build
+        run: |
+          cd electron
+          npm install
+          copy ..\generated-icon.png icons\icon_source.png
+          # For Windows we'd need ImageMagick for icon generation
+          # For the CI we'll just use the source icon directly
+          copy icons\icon_source.png icons\icon.png
+          npm run build:win
+          
+      - name: Upload Windows build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: windows-build
+          path: electron/dist/*.exe
+          
+  build-linux:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          
+      - name: Install ImageMagick
+        run: sudo apt-get update && sudo apt-get install -y imagemagick
+          
+      - name: Install dependencies and build
+        run: |
+          cd electron
+          npm install
+          cp -r ../generated-icon.png icons/icon_source.png
+          # Generate Linux icons
+          cd icons
+          chmod +x generate-icons.sh
+          ./generate-icons.sh
+          cd ..
+          npm run build:linux
+          
+      - name: Upload Linux build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: linux-build
+          path: |
+            electron/dist/*.AppImage
+            electron/dist/*.deb
+            
+  create-release:
+    needs: [build-macos, build-windows, build-linux]
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v3
+        
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            macos-build/*.dmg
+            windows-build/*.exe
+            linux-build/*.AppImage
+            linux-build/*.deb
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
