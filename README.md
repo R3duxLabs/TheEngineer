@@ -1,14 +1,25 @@
 # The Engineer
 
+<div align="center">
+  
+![The Engineer Logo](generated-icon.png)
+
 A specialized Claude assistant interface designed to help you work with your code and Replit projects. This powerful tool connects to the Claude AI system to provide code analysis, suggestions, and improvements.
 
-## Features
+[![GitHub issues](https://img.shields.io/github/issues/R3duxLabs/TheEngineer)](https://github.com/R3duxLabs/TheEngineer/issues)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-- Interactive chat with Claude using the Anthropic API
-- File browsing and viewing across your Replit projects
-- Code analysis and enhancement recommendations
-- Conversation history management
-- Dual interfaces: Console and Web
+</div>
+
+## ✨ Features
+
+- 💬 Interactive chat with Claude using the Anthropic API
+- 📁 File browsing and viewing across your Replit projects
+- 🔍 Code analysis and enhancement recommendations
+- 📝 Conversation history management 
+- 🌐 Dual interfaces: Console and Web
+- 🤖 Multiple agent personas with different specialties
+- 📊 Web API server for external integrations
 
 ## Setup
 
