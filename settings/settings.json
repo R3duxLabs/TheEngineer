@@ -1,0 +1,14 @@
+{
+  "theme": "light",
+  "font_size": "medium",
+  "save_history": true,
+  "max_history": 100,
+  "code_style": "default",
+  "domain": null,
+  "current_agent": "claude",
+  "offline_mode": {
+    "enabled": false,
+    "cache_responses": true,
+    "max_cache_size": 1000
+  }
+}
