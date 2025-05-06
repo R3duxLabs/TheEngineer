@@ -2,11 +2,11 @@
 run = "python main.py"
 language = "python3"
 entrypoint = "main.py"
-modules = ["python-3.11"]
+modules = ["nodejs-20", "python-3.11"]
 
 [nix]
 channel = "stable-23_11"
-packages = ["python311Packages.uvicorn"]
+packages = ["python311Packages.uvicorn", "zip"]
 
 [deployment]
 run = "python main.py --web"
@@ -18,8 +18,16 @@ localPort = 5000
 externalPort = 5000
 
 [[ports]]
+localPort = 8000
+externalPort = 8000
+
+[[ports]]
 localPort = 8080
 externalPort = 80
+
+[[ports]]
+localPort = 8888
+externalPort = 3000
 
 [workflows]
 runButton = "Run API"
@@ -40,4 +48,4 @@ mode = "sequential"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "uvicorn app.main:app --host 0.0.0.0 --port 5000 --reload"
+args = "uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"

@@ -12,9 +12,13 @@ import logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-# Initialize global variables
-global current_domain
-current_domain = None
+# Create state class for global variables
+class AppState:
+    def __init__(self):
+        self.current_domain = None
+
+# Initialize state
+app_state = AppState()
 
 # Anthropic API key
 API_KEY = os.environ.get("ANTHROPIC_API_KEY")
@@ -84,10 +88,6 @@ EXECUTION LOGIC v3.0 – DISCIPLINED DELIVERY
 
 6. Confirm all file deliveries; if failed, split and resend.
 """
-
-# Initialize global variables
-
-current_domain = None
 
 # Conversation storage
 CONVERSATION_DIR = "conversations"
@@ -1872,8 +1872,8 @@ class TheEngineerHandler(http.server.SimpleHTTPRequestHandler):
                     elif message == '/domains':
                         # List available domains
                         domains = get_available_domains()
-                        if current_domain:
-                            response = f"Current domain: {current_domain}\n\nAvailable domains:\n" + \
+                        if app_state.current_domain:
+                            response = f"Current domain: {app_state.current_domain}\n\nAvailable domains:\n" + \
                                       "\n".join([f"• {domain}" for domain in domains])
                         else:
                             response = "Current domain: default\n\nAvailable domains:\n" + \
@@ -1888,14 +1888,13 @@ class TheEngineerHandler(http.server.SimpleHTTPRequestHandler):
                             response = "Usage: /domain <domain_name> - Sets the active domain\n" + \
                                       "/domain default - Resets to the default domain"
                         elif domain.lower() == 'default':
-                            global current_domain
-                            current_domain = None
+                            app_state.current_domain = None
                             update_setting('domain', None)
                             response = "Reset to default domain."
                         else:
                             domains = get_available_domains()
                             if domain in domains:
-                                current_domain = domain
+                                app_state.current_domain = domain
                                 update_setting('domain', domain)
                                 response = f"Switched to {domain} domain."
                             else:
@@ -2248,7 +2247,7 @@ class TheEngineerHandler(http.server.SimpleHTTPRequestHandler):
 
 def run_web_server():
     """Run the HTTP server"""
-    port = 8080
+    port = 8888
     handler = TheEngineerHandler
     
     try:
@@ -2430,30 +2429,28 @@ def run_console():
             domains = get_available_domains()
             print("\nAvailable domains:")
             for i, domain in enumerate(domains, 1):
-                if domain == current_domain:
+                if domain == app_state.current_domain:
                     print(f"  {i}. {domain} (active)")
                 else:
                     print(f"  {i}. {domain}")
             
-            if current_domain is None:
+            if app_state.current_domain is None:
                 print("\nCurrent domain: default")
             else:
-                print(f"\nCurrent domain: {current_domain}")
+                print(f"\nCurrent domain: {app_state.current_domain}")
             continue
             
         elif user_input.lower().startswith("domain "):
             domain = user_input[7:].strip()
             
             if domain.lower() == 'default':
-                global current_domain
-                current_domain = None
+                app_state.current_domain = None
                 update_setting('domain', None)
                 print("\nReset to default domain.")
             else:
                 domains = get_available_domains()
                 if domain in domains:
-                    global current_domain
-                    current_domain = domain
+                    app_state.current_domain = domain
                     update_setting('domain', domain)
                     print(f"\nSwitched to {domain} domain.")
                 else:
