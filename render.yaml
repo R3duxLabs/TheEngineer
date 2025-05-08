@@ -3,7 +3,7 @@ services:
     name: theengineer
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: python main.py --web
+    startCommand: ./start.sh
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.8
