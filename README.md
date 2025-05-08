@@ -23,6 +23,8 @@ A specialized Claude assistant interface designed to help you work with your cod
 
 ## Setup
 
+### Local Development
+
 1. **Run the setup script**:
    ```bash
    bash setup.sh
@@ -36,6 +38,30 @@ A specialized Claude assistant interface designed to help you work with your cod
 3. **Run the application**:
    - Click the "Run" button in your Replit project
    - Or run manually with `python main.py`
+
+### Deployment on Render
+
+1. **Fork or clone this repository to your GitHub account**
+
+2. **Create a new Web Service on Render**:
+   - Sign in to [Render](https://render.com/)
+   - Click "New +" > "Web Service"
+   - Connect your GitHub repository
+   - Choose the branch to deploy (e.g., `main` or `fix-port-conflicts`)
+
+3. **Configure the service**:
+   - Name: Choose a name for your service (e.g., "theengineer")
+   - Environment: Python
+   - Build Command: `pip install -r requirements.txt`
+   - Start Command: `./start.sh`
+
+4. **Add environment variables**:
+   - ANTHROPIC_API_KEY: Your Anthropic API key
+   - PYTHON_VERSION: 3.11.8
+
+5. **Deploy the service**:
+   - Click "Create Web Service"
+   - Wait for the deployment to complete
 
 ## Usage
 
@@ -96,9 +122,16 @@ python main.py --web
 ## Troubleshooting
 
 - If the application doesn't respond in the web interface, check the console for error messages
-- Make sure your API key is correctly set in the Secrets tab
+- Make sure your API key is correctly set in the Secrets tab (local) or Environment Variables (Render)
 - For file paths in project commands, use relative paths from the project root
+- If you experience port conflicts, the application will automatically use port 8888 for the web server and 8000 for FastAPI
 
 ## Customization
 
 You can customize the system prompt in the `main.py` file to change Claude's behavior and focus areas.
+
+## Environment Variables
+
+- `ANTHROPIC_API_KEY`: Required for connecting to the Claude API
+- `PORT`: Optional - Override the default web server port
+- `API_PORT`: Optional - Override the default FastAPI port
