@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: theengineer
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py --web
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.8
+    healthCheckPath: /
